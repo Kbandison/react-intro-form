@@ -1,6 +1,8 @@
 import React from "react";
 import Movie from "./Movie";
 import FormHead from "./FormHead";
+import AddMovie from "./AddMovie";
+import DeleteButton from "./DeleteButton";
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class MovieForm extends React.Component {
           imdbRating: 9.2,
           director: "Francis Ford Coppola",
           year: 1972,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "The Shawshank Redemption",
@@ -26,7 +28,7 @@ class MovieForm extends React.Component {
           imdbRating: 9.3,
           director: "Frank Darabont",
           year: 1994,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "The Dark Knight",
@@ -36,7 +38,7 @@ class MovieForm extends React.Component {
           imdbRating: 9.0,
           director: "Christopher Nolan",
           year: 2008,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "Pulp Fiction",
@@ -46,7 +48,7 @@ class MovieForm extends React.Component {
           imdbRating: 8.9,
           director: "Quentin Tarantino",
           year: 1994,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "The Lord of the Rings: The Return of the King",
@@ -56,7 +58,7 @@ class MovieForm extends React.Component {
           imdbRating: 8.9,
           director: "Peter Jackson",
           year: 2003,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "Forrest Gump",
@@ -66,7 +68,7 @@ class MovieForm extends React.Component {
           imdbRating: 8.8,
           director: "Robert Zemeckis",
           year: 1994,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "Inception",
@@ -76,7 +78,7 @@ class MovieForm extends React.Component {
           imdbRating: 8.8,
           director: "Christopher Nolan",
           year: 2010,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "The Matrix",
@@ -86,7 +88,7 @@ class MovieForm extends React.Component {
           imdbRating: 8.7,
           director: "Lana Wachowski, Lilly Wachowski",
           year: 1999,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "Schindler's List",
@@ -96,7 +98,7 @@ class MovieForm extends React.Component {
           imdbRating: 8.9,
           director: "Steven Spielberg",
           year: 1993,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
         {
           title: "Goodfellas",
@@ -106,18 +108,47 @@ class MovieForm extends React.Component {
           imdbRating: 8.7,
           director: "Martin Scorsese",
           year: 1990,
-          dateAdded: new Date(),
+          dateAdded: new Date().toString(),
         },
       ],
     };
   }
 
+  addMovie = (movie) => {
+    this.setState({
+      movies: [...this.state.movies, movie],
+    });
+  };
+
+  removeMovie = (index) => {
+    const { movies } = this.state;
+
+    this.setState({
+      movies: movies.filter((movie, i) => {
+        return i !== index;
+      }),
+    });
+  };
+
+  deleteAllMovies = () => {
+    this.setState({
+      movies: [],
+    });
+  };
+
   render() {
     return (
-      <table>
-        <FormHead />
-        <Movie movies={this.state.movies} />
-      </table>
+      <>
+        <table>
+          <FormHead />
+          <Movie movies={this.state.movies} removeMovie={this.removeMovie} />
+        </table>
+        <DeleteButton deleteAllMovies={this.deleteAllMovies} />
+        <br />
+        <br />
+        <br />
+        <AddMovie addMovie={this.addMovie} />
+      </>
     );
   }
 }

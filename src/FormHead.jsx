@@ -13,7 +13,7 @@ class FormHead extends React.Component {
           <th>Rating</th>
           <th>Director</th>
           <th>Released</th>
-          {/* <p>{movie.dateAdded}</p> */}
+          <th>Date Added</th>
         </tr>
       </thead>
     );
