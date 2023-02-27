@@ -1,4 +1,6 @@
 import React from "react";
+import Movie from "./Movie";
+import FormHead from "./FormHead";
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -112,21 +114,10 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.movies.map((movie, index) => {
-          return (
-            <div key={index}>
-              <h2>{movie.title}</h2>
-              <p>{movie.plot}</p>
-              <p>{movie.genre}</p>
-              <p>{movie.imdbRating}</p>
-              <p>{movie.director}</p>
-              <p>{movie.year}</p>
-              {/* <p>{movie.dateAdded}</p> */}
-            </div>
-          );
-        })}
-      </div>
+      <table>
+        <FormHead />
+        <Movie movies={this.state.movies} />
+      </table>
     );
   }
 }
