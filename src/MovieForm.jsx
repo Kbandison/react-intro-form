@@ -3,6 +3,7 @@ import Movie from "./Movie";
 import FormHead from "./FormHead";
 import AddMovie from "./AddMovie";
 import DeleteButton from "./DeleteButton";
+import SearchForm from "./SearchForm";
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -136,9 +137,20 @@ class MovieForm extends React.Component {
     });
   };
 
+  searchMovie = (search) => {
+    const { movies } = this.state;
+    this.setState({
+      movies: movies.filter((movie) => {
+        return movie.title.toLowerCase().includes(search);
+      }),
+    });
+  };
+
   render() {
     return (
       <>
+        <SearchForm searchMovie={this.searchMovie} />
+        <br />
         <table>
           <FormHead />
           <Movie movies={this.state.movies} removeMovie={this.removeMovie} />
