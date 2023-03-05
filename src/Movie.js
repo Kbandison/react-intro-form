@@ -16,7 +16,7 @@ class Movie extends React.Component {
                 <td>{movie.imdbRating}</td>
                 <td>{movie.director}</td>
                 <td>{movie.year}</td>
-                <td>{movie.dateAdded}</td>
+                <td>{new Date().toString()}</td>
                 <td>
                   <button onClick={() => this.props.removeMovie(index)}>
                     Delete
