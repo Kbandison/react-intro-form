@@ -30,7 +30,6 @@ let AddMovie = (props) => {
       year: "",
       dateAdded: new Date().toString(),
     });
-    // console.log(inputFields);
   };
 
   return (

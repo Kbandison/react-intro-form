@@ -15,7 +15,7 @@ let Movie = (props) => {
               <td>{movie.imdbRating}</td>
               <td>{movie.director}</td>
               <td>{movie.year}</td>
-              <td>{Date().toString()}</td>
+              <td>{new Date().toString()}</td>
               <td>
                 <button onClick={() => props.removeMovie(index)}>Delete</button>
               </td>

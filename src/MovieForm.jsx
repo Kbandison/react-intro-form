@@ -9,62 +9,50 @@ import movies from "./movies.json";
 let MovieForm = () => {
   const [movieList, setMovieList] = useState(movies);
   const [filteredMovieList, setfilteredMovieList] = useState(movies);
-  const [search, setSearch] = useState({ search: "", selectList: "" });
+  const [search, setSearch] = useState("");
+  const [searchField, setSearchField] = useState("title");
 
   useEffect(() => {
     const handleFiltered = () => {
       const filteredMovies = movieList.filter((movie) => {
-        // const lowercased = movie.search.selectList.toLowerCase();
-        return movieList.includes(search.search);
+        const lowercased = movie[searchField].toLowerCase();
+        return lowercased.includes(search);
       });
       setfilteredMovieList(filteredMovies);
     };
     handleFiltered();
-  }, [movieList, search]);
+  }, [movieList, search, searchField]);
 
   const addMovie = (movie) => {
     setMovieList([...movieList, movie]);
     console.log(movieList);
   };
-  console.log(movieList);
 
   const removeMovie = (index) => {
-    setMovieList(movieList.filter((movie, i) => i !== index));
+    setMovieList(filteredMovieList.filter((movie, i) => i !== index));
   };
 
   const searchMovie = (event) => {
     setSearch(event.target.value);
   };
 
-  const filteredMovies = () =>
-    movieList.filter((movie) => {
-      return movie.title.toLowerCase().includes(search);
-    });
-
   let deleteAllMovies = () => {
-    setMovieList([]);
+    setfilteredMovieList([]);
   };
-
-  // searchMovie = (search) => {
-  //   const { movies } = this.state;
-  //   this.setState({
-  //     movies: movies.filter((movie) => {
-  //       return movie.title.toLowerCase().includes(search);
-  //     }),
-  //   });
-  // };
 
   return (
     <>
       <SearchForm
         handleChange={searchMovie}
-        filteredMovies={filteredMovies}
+        filteredMovies={filteredMovieList}
         search={search}
+        searchField={searchField}
+        setSearchField={setSearchField}
       />
       <br />
       <table>
         <FormHead />
-        <Movie movies={movieList} removeMovie={removeMovie} />
+        <Movie movies={filteredMovieList} removeMovie={removeMovie} />
       </table>
       <DeleteButton deleteAllMovies={deleteAllMovies} />
       <br />
