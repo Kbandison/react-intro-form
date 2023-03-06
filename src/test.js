@@ -3,7 +3,7 @@ import { useState } from "react";
 let AddMovie = (props) => {
   const [inputFields, setInputFields] = useState({
     title: "",
-    actors: [],
+    actors: "",
     plot: "",
     genre: "",
     imdbRating: "",
@@ -22,7 +22,7 @@ let AddMovie = (props) => {
     props.addMovie(inputFields);
     setInputFields({
       title: "",
-      actors: [],
+      actors: "",
       plot: "",
       genre: "",
       imdbRating: "",
@@ -30,7 +30,6 @@ let AddMovie = (props) => {
       year: "",
       dateAdded: new Date().toString(),
     });
-    // console.log(inputFields);
   };
 
   return (
