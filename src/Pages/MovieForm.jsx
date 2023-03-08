@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Movie from "./Movie";
-import FormHead from "./FormHead";
-import AddMovie from "./AddMovie";
-import DeleteButton from "./DeleteButton";
-import SearchForm from "./SearchForm";
-import movies from "./movies.json";
+import Movie from "../Components/Movie";
+import FormHead from "../Components/FormHead";
+import AddMovie from "../Components/AddMovie";
+import DeleteButton from "../Components/DeleteButton";
+import SearchForm from "../Components/SearchForm";
+import movies from "../movies.json";
 
 let MovieForm = () => {
   const [movieList, setMovieList] = useState(movies);
