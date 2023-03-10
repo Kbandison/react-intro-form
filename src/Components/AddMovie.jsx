@@ -34,75 +34,97 @@ let AddMovie = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
+      <h2 className="form-title">Add a Movie</h2>
+      <label htmlFor="title">Title:</label>
       <br />
       <input
         type="text"
         name="title"
         id="title"
+        className="text-input"
+        placeholder="Enter a movie title"
         value={inputFields.title}
         onChange={handleChange}
       />
       <br />
-      <label htmlFor="actors">Actors</label>
+      <br />
+      <label htmlFor="actors">Actors:</label>
       <br />
       <input
         type="text"
         name="actors"
         id="actors"
+        className="text-input"
+        placeholder="Enter actors"
         value={inputFields.actors}
         onChange={handleChange}
       />
       <br />
-      <label htmlFor="plot">Plot</label>
+      <br />
+      <label htmlFor="plot">Plot:</label>
       <br />
       <input
         type="text"
         name="plot"
         id="plot"
+        className="text-input"
+        placeholder="Enter a plot"
         value={inputFields.plot}
         onChange={handleChange}
       />
       <br />
-      <label htmlFor="genre">Genre</label>
+      <br />
+      <label htmlFor="genre">Genre:</label>
       <br />
       <input
         type="text"
         name="genre"
         id="genre"
+        className="text-input"
+        placeholder="Enter a genre"
         value={inputFields.genre}
         onChange={handleChange}
       />
       <br />
-      <label htmlFor="imdbRating">Rating</label>
+      <br />
+      <label htmlFor="imdbRating">Rating:</label>
       <br />
       <input
         type="text"
         name="imdbRating"
         id="imdbRating"
+        className="text-input"
+        placeholder="Enter a rating"
         value={inputFields.imdbRating}
         onChange={handleChange}
       />
       <br />
-      <label htmlFor="director">Director</label>
+      <br />
+      <label htmlFor="director">Director:</label>
       <br />
       <input
         type="text"
         name="director"
         id="director"
+        className="text-input"
+        placeholder="Enter a director"
         value={inputFields.director}
         onChange={handleChange}
       />
       <br />
-      <label htmlFor="year">Released</label>
+      <br />
+      <label htmlFor="year">Year Released:</label>
       <br />
       <input
         type="text"
         name="year"
         id="year"
+        className="text-input"
+        placeholder="Enter a year"
         value={inputFields.year}
         onChange={handleChange}
       />
+      <br />
       <br />
       <button type="submit">Add Movie</button>
     </form>
